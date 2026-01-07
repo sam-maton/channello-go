@@ -7,7 +7,7 @@ import (
 
 func main() {
 	mux := http.NewServeMux()
-	mux.HandleFunc("/", getVideoFeed)
+	mux.HandleFunc("/{$}", getVideoFeed)
 	mux.HandleFunc("/feed", getVideoFeed)
 	mux.HandleFunc("GET /videos/{id}", getVideoById)
 
