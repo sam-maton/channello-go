@@ -5,8 +5,6 @@ import (
 	"html/template"
 	"log"
 	"net/http"
-
-	"github.com/sam-maton/channello-go/internal/cache"
 )
 
 var approveChannels = []string{
@@ -16,20 +14,20 @@ var approveChannels = []string{
 
 func getVideoFeed(w http.ResponseWriter, r *http.Request) {
 
-	fmt.Println("Request URL:", r.URL.Path)
+	// fmt.Println("Request URL:", r.URL.Path)
 
-	cache, err := cache.LoadCache("./internal/data/channel-cache.json")
+	// cache, err := cache.LoadCache("./internal/data/channel-cache.json")
 
-	_, nonCahced := cache.GetChannelFeeds(approveChannels)
+	// if err != nil {
+	// 	log.Print(err.Error())
 
-	fmt.Println(nonCahced)
+	// 	http.Error(w, "Internal Server Error", http.StatusInternalServerError)
+	// 	return
+	// }
 
-	if err != nil {
-		log.Print(err.Error())
+	// _, nonCahced := cache.GetChannelFeeds(approveChannels)
 
-		http.Error(w, "Internal Server Error", http.StatusInternalServerError)
-		return
-	}
+	// fmt.Println(nonCahced)
 
 	files := []string{
 		"./ui/html/base.html",
