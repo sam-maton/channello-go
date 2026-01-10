@@ -8,16 +8,24 @@ import (
 	"os"
 )
 
+type application struct {
+	logger *slog.Logger
+}
+
 func main() {
 	addr := flag.String("addr", ":4000", "HTTP network address")
 	flag.Parse()
 
 	logger := slog.New(slog.NewTextHandler(os.Stdout, nil))
 
+	app := application{
+		logger: logger,
+	}
+
 	mux := http.NewServeMux()
-	mux.HandleFunc("/{$}", getVideoFeed)
-	mux.HandleFunc("/feed", getVideoFeed)
-	mux.HandleFunc("GET /videos/{id}", getVideoById)
+	mux.HandleFunc("/{$}", app.getVideoFeed)
+	mux.HandleFunc("/feed", app.getVideoFeed)
+	mux.HandleFunc("GET /videos/{id}", app.getVideoById)
 
 	logger.Info(fmt.Sprintf("starting server on http://localhost%s/", *addr))
 

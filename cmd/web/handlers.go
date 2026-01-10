@@ -12,7 +12,7 @@ var approveChannels = []string{
 	"UC6z0E8nSfCvelwA3bon_phg",
 }
 
-func getVideoFeed(w http.ResponseWriter, r *http.Request) {
+func (app *application) getVideoFeed(w http.ResponseWriter, r *http.Request) {
 
 	// fmt.Println("Request URL:", r.URL.Path)
 
@@ -54,7 +54,7 @@ func getVideoFeed(w http.ResponseWriter, r *http.Request) {
 
 }
 
-func getVideoById(w http.ResponseWriter, r *http.Request) {
+func (app *application) getVideoById(w http.ResponseWriter, r *http.Request) {
 	id := r.PathValue("id")
 
 	fmt.Fprintf(w, "Video for ID %s", id)
