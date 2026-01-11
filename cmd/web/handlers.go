@@ -14,21 +14,6 @@ var approveChannels = []string{
 
 func (app *application) getVideoFeed(w http.ResponseWriter, r *http.Request) {
 
-	// fmt.Println("Request URL:", r.URL.Path)
-
-	// cache, err := cache.LoadCache("./internal/data/channel-cache.json")
-
-	// if err != nil {
-	// 	log.Print(err.Error())
-
-	// 	http.Error(w, "Internal Server Error", http.StatusInternalServerError)
-	// 	return
-	// }
-
-	// _, nonCahced := cache.GetChannelFeeds(approveChannels)
-
-	// fmt.Println(nonCahced)
-
 	files := []string{
 		"./ui/html/base.html",
 		"./ui/html/pages/video-feed.html",
